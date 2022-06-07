@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "c0shill"
+version = "0.1.0"
+description = ""
+authors = ["Jamie O'Reilly-Gall <jamie.oreillygall@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google-api-python-client = "^2.49.0"
+pandas = "^1.4.2"
+ipython = "^8.4.0"
+pyzmq = "^23.0.0"
+ipykernel = "^6.13.0"
+
+[tool.poetry.dev-dependencies]
+black = {version = "^22.3.0", allow-prereleases = true}
+ipykernel = "^6.13.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
