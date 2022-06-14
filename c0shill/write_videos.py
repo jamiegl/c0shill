@@ -20,7 +20,7 @@ for row in channels:
     )
     i = 0
     for chunk in channel_meta:
-        if i > 5:
+        if i > 100:
             break
         print(i)
         chunk["channel_id"] = channel_id

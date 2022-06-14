@@ -29,14 +29,14 @@ class YoutubeConnector:
     @paginate
     def get_comments(self, video_id, part, **kwargs):
         comment_lazy = self._disco.commentThreads().list(
-            part=",".join(part), videoId=video_id, **kwargs
+            part=",".join(part), videoId=video_id, maxResults=200, **kwargs
         )
         comment_response = comment_lazy.execute()
         return comment_response
 
     def _get_channel_upload_id(self, channel_id):
         channel_content_lazy = self._disco.channels().list(
-            part="contentDetails", id=channel_id, maxResults=50
+            part="contentDetails", id=channel_id, maxResults=200
         )
         channel_content = channel_content_lazy.execute()
         response_items = channel_content["items"]
@@ -54,7 +54,7 @@ class YoutubeConnector:
     @paginate
     def _get_videos(self, channel_upload_id, part, **kwargs):
         videos_lazy = self._disco.playlistItems().list(
-            part=",".join(part), playlistId=channel_upload_id, maxResults=50, **kwargs
+            part=",".join(part), playlistId=channel_upload_id, maxResults=200, **kwargs
         )
         videos = videos_lazy.execute()
         return videos

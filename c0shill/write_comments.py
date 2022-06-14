@@ -14,17 +14,14 @@ video_df = pd.read_csv("persist/cleansed/environmental_videos.csv")
 
 ids = video_df[["videoId", "channelId"]].to_records(index=False)
 
-i = 0
 for v_id, c_id in ids:
-    i += 1
-    if i > 5:
-        break
     j = 0 
+    if j >= 100:
+        break
     filedir = "persist/blob/channels/{0}/video_snippet/{1}/".format(c_id, v_id)
     os.makedirs(filedir, exist_ok=True)
     for chunk in youtube_conn.get_comments(video_id=v_id, part=["snippet", "replies"]):
-        if j > 50:
-            break
+        print(j)
         filepath = f"{filedir}/comments-pt-{j}.json"
         with open(filepath, "w+") as ioer:
             json.dump(chunk, ioer)
