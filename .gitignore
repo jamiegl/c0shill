@@ -1,5 +1,5 @@
 .ipynb_checkpoints
 __pycache__
 .vscode
-persist
+persist/blob
 secrets.json
